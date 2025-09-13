@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRCTC: Available Trains</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <div class="logo-circle">
+                    <i class="fas fa-train"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="hindi">भारतीय रेल</span>
+                    <span class="english">INDIAN RAILWAYS</span>
+                </div>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>INDIAN RAILWAYS</h1>
+            <p>Safety | Security | Punctuality</p>
+        </div>
+        <div class="header-right">
+            <div class="irctc-logo">
+                <div class="irctc-icon">R</div>
+                <span>IRCTC</span>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../Login_Page/index.html" class="nav-link">Login</a>
+            <a href="../Registeration page/index.html" class="nav-link">Register</a>
+            <a href="index.html" class="nav-link active">Train List</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="train-list-container">
+        <div class="train-list-content">
+            <div class="search-summary">
+                <h1>Available Trains</h1>
+                <div class="search-details" id="search-details">
+                    <p>Loading search results...</p>
+                </div>
+            </div>
+            
+            <div class="trains-grid">
+                <!-- Train Card 1 -->
+                <div class="train-card">
+                    <div class="train-header">
+                        <div class="train-info">
+                            <h3>Rajdhani Express</h3>
+                            <span class="train-number">12301</span>
+                        </div>
+                        <div class="train-type premium">Premium</div>
+                    </div>
+                    
+                    <div class="route-info">
+                        <div class="station">
+                            <div class="station-name">Delhi</div>
+                            <div class="station-time">06:00 AM</div>
+                        </div>
+                        <div class="route-line">
+                            <div class="duration">10h 00m</div>
+                            <div class="route-arrow">→</div>
+                        </div>
+                        <div class="station">
+                            <div class="station-name">Mumbai</div>
+                            <div class="station-time">04:00 PM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-section">
+                        <div class="price-options">
+                            <div class="price-option">
+                                <span class="class">AC 2 Tier</span>
+                                <span class="price">₹2,850</span>
+                            </div>
+                            <div class="price-option">
+                                <span class="class">AC 3 Tier</span>
+                                <span class="price">₹1,950</span>
+                            </div>
+                            <div class="price-option">
+                                <span class="class">Sleeper</span>
+                                <span class="price">₹850</span>
+                            </div>
+                        </div>
+                        <div class="availability">
+                            <span class="seats">50 seats available</span>
+                        </div>
+                    </div>
+                    
+                    <button class="book-btn" onclick="selectTrain('12301')">
+                        <i class="fas fa-ticket-alt"></i>
+                        Book Now
+                    </button>
+                </div>
+                <!-- Train Card 2 -->
+                <div class="train-card">
+                    <div class="train-header">
+                        <div class="train-info">
+                            <h3>Delhi-Mumbai Superfast</h3>
+                            <span class="train-number">12302</span>
+                        </div>
+                        <div class="train-type express">Express</div>
+                    </div>
+                    
+                    <div class="route-info">
+                        <div class="station">
+                            <div class="station-name">Delhi</div>
+                            <div class="station-time">08:00 AM</div>
+                        </div>
+                        <div class="route-line">
+                            <div class="duration">10h 30m</div>
+                            <div class="route-arrow">→</div>
+                        </div>
+                        <div class="station">
+                            <div class="station-name">Mumbai</div>
+                            <div class="station-time">06:30 PM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-section">
+                        <div class="price-options">
+                            <div class="price-option">
+                                <span class="class">AC 2 Tier</span>
+                                <span class="price">₹2,200</span>
+                            </div>
+                            <div class="price-option">
+                                <span class="class">AC 3 Tier</span>
+                                <span class="price">₹1,500</span>
+                            </div>
+                            <div class="price-option">
+                                <span class="class">Sleeper</span>
+                                <span class="price">₹650</span>
+                            </div>
+                        </div>
+                        <div class="availability">
+                            <span class="seats">40 seats available</span>
+                        </div>
+                    </div>
+                    
+                    <button class="book-btn" onclick="selectTrain('12302')">
+                        <i class="fas fa-ticket-alt"></i>
+                        Book Now
+                    </button>
+                </div>
+
+                <!-- Train Card 3 -->
+                <div class="train-card">
+                    <div class="train-header">
+                        <div class="train-info">
+                            <h3>Shatabdi Express</h3>
+                            <span class="train-number">12045</span>
+                        </div>
+                        <div class="train-type shatabdi">Shatabdi</div>
+                    </div>
+                    
+                    <div class="route-info">
+                        <div class="station">
+                            <div class="station-name">Chandigarh</div>
+                            <div class="station-time">08:00 AM</div>
+                        </div>
+                        <div class="route-line">
+                            <div class="duration">2h 30m</div>
+                            <div class="route-arrow">→</div>
+                        </div>
+                        <div class="station">
+                            <div class="station-name">Delhi</div>
+                            <div class="station-time">10:30 AM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-section">
+                        <div class="price-options">
+                            <div class="price-option">
+                                <span class="class">Chair Car</span>
+                                <span class="price">₹850</span>
+                            </div>
+                            <div class="price-option">
+                                <span class="class">Executive</span>
+                                <span class="price">₹1,250</span>
+                            </div>
+                        </div>
+                        <div class="availability">
+                            <span class="seats">30 seats available</span>
+                        </div>
+                    </div>
+                    
+                    <button class="book-btn" onclick="selectTrain('12045')">
+                        <i class="fas fa-ticket-alt"></i>
+                        Book Now
+                    </button>
+                </div>
+
+                <!-- Train Card 4 -->
+                <div class="train-card">
+                    <div class="train-header">
+                        <div class="train-info">
+                            <h3>Duronto Express</h3>
+                            <span class="train-number">12245</span>
+                        </div>
+                        <div class="train-type duronto">Duronto</div>
+                    </div>
+                    
+                    <div class="route-info">
+                        <div class="station">
+                            <div class="station-name">Mumbai</div>
+                            <div class="station-time">05:30 PM</div>
+                        </div>
+                        <div class="route-line">
+                            <div class="duration">15h 30m</div>
+                            <div class="route-arrow">→</div>
+                        </div>
+                        <div class="station">
+                            <div class="station-name">Kolkata</div>
+                            <div class="station-time">09:00 AM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-section">
+                        <div class="price-options">
+                            <div class="price-option">
+                                <span class="class">AC 2 Tier</span>
+                                <span class="price">₹1,950</span>
+                            </div>
+                            <div class="price-option">
+                                <span class="class">AC 3 Tier</span>
+                                <span class="price">₹1,350</span>
+                            </div>
+                            <div class="price-option">
+                                <span class="class">Sleeper</span>
+                                <span class="price">₹550</span>
+                            </div>
+                        </div>
+                        <div class="availability">
+                            <span class="seats">20 seats available</span>
+                        </div>
+                    </div>
+                    
+                    <button class="book-btn" onclick="selectTrain('12245')">
+                        <i class="fas fa-ticket-alt"></i>
+                        Book Now
+                    </button>
+                </div>
+
+                <!-- Train Card 5 -->
+                <div class="train-card">
+                    <div class="train-header">
+                        <div class="train-info">
+                            <h3>Garib Rath</h3>
+                            <span class="train-number">12615</span>
+                        </div>
+                        <div class="train-type garib">Garib Rath</div>
+                    </div>
+                    
+                    <div class="route-info">
+                        <div class="station">
+                            <div class="station-name">Bangalore</div>
+                            <div class="station-time">09:00 AM</div>
+                        </div>
+                        <div class="route-line">
+                            <div class="duration">4h 00m</div>
+                            <div class="route-arrow">→</div>
+                        </div>
+                        <div class="station">
+                            <div class="station-name">Chennai</div>
+                            <div class="station-time">01:00 PM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-section">
+                        <div class="price-options">
+                            <div class="price-option">
+                                <span class="class">AC 3 Tier</span>
+                                <span class="price">₹450</span>
+                            </div>
+                            <div class="price-option">
+                                <span class="class">Sleeper</span>
+                                <span class="price">₹250</span>
+                            </div>
+                        </div>
+                        <div class="availability">
+                            <span class="seats">100 seats available</span>
+                        </div>
+                    </div>
+                    
+                    <button class="book-btn" onclick="selectTrain('12615')">
+                        <i class="fas fa-ticket-alt"></i>
+                        Book Now
+                    </button>
+                </div>
+
+                <!-- Train Card 6 -->
+                <div class="train-card">
+                    <div class="train-header">
+                        <div class="train-info">
+                            <h3>Chandigarh-Delhi Fast</h3>
+                            <span class="train-number">12046</span>
+                        </div>
+                        <div class="train-type express">Express</div>
+                    </div>
+                    
+                    <div class="route-info">
+                        <div class="station">
+                            <div class="station-name">Chandigarh</div>
+                            <div class="station-time">10:00 AM</div>
+                        </div>
+                        <div class="route-line">
+                            <div class="duration">2h 45m</div>
+                            <div class="route-arrow">→</div>
+                        </div>
+                        <div class="station">
+                            <div class="station-name">Delhi</div>
+                            <div class="station-time">12:45 PM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-section">
+                        <div class="price-options">
+                            <div class="price-option">
+                                <span class="class">AC Chair Car</span>
+                                <span class="price">₹750</span>
+                            </div>
+                            <div class="price-option">
+                                <span class="class">Sleeper</span>
+                                <span class="price">₹350</span>
+                            </div>
+                        </div>
+                        <div class="availability">
+                            <span class="seats">20 seats available</span>
+                        </div>
+                    </div>
+                    
+                    <button class="book-btn" onclick="selectTrain('12046')">
+                        <i class="fas fa-ticket-alt"></i>
+                        Book Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Get Connected with us on social networks</p>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
+

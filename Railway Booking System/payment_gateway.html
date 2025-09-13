@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Payment - IRCTC</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <div class="logo-circle">
+                    <i class="fas fa-train"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="hindi">भारतीय रेल</span>
+                    <span class="english">INDIAN RAILWAYS</span>
+                </div>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>INDIAN RAILWAYS</h1>
+            <p>Safety | Security | Punctuality</p>
+        </div>
+        <div class="header-right">
+            <div class="irctc-logo">
+                <div class="irctc-icon">R</div>
+                <span>IRCTC</span>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="Login_Page/index.html" class="nav-link">Login</a>
+            <a href="Registeration page/index.html" class="nav-link">Register</a>
+            <a href="train_list/index.html" class="nav-link">Train List</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="payment-container">
+        <div class="payment-content">
+            <!-- Payment Header -->
+            <div class="payment-header">
+                <div class="security-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure Payment</span>
+                </div>
+                <h1>Complete Your Payment</h1>
+                <p>Your payment is secured with 256-bit SSL encryption</p>
+            </div>
+
+            <div class="payment-layout">
+                <!-- Left Side - Payment Methods -->
+                <div class="payment-methods">
+                    <h2>Choose Payment Method</h2>
+                    
+                    <!-- Payment Method Selection -->
+                    <div class="payment-options">
+                        <div class="payment-option active" data-method="card">
+                            <div class="payment-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="payment-info">
+                                <h3>Credit/Debit Card</h3>
+                                <p>Visa, Mastercard, RuPay</p>
+                            </div>
+                            <div class="payment-radio">
+                                <input type="radio" name="payment-method" value="card" checked>
+                            </div>
+                        </div>
+
+                        <div class="payment-option" data-method="upi">
+                            <div class="payment-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="payment-info">
+                                <h3>UPI Payment</h3>
+                                <p>Google Pay, PhonePe, Paytm</p>
+                            </div>
+                            <div class="payment-radio">
+                                <input type="radio" name="payment-method" value="upi">
+                            </div>
+                        </div>
+
+                        <div class="payment-option" data-method="netbanking">
+                            <div class="payment-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div class="payment-info">
+                                <h3>Net Banking</h3>
+                                <p>All major banks supported</p>
+                            </div>
+                            <div class="payment-radio">
+                                <input type="radio" name="payment-method" value="netbanking">
+                            </div>
+                        </div>
+
+                        <div class="payment-option" data-method="wallet">
+                            <div class="payment-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="payment-info">
+                                <h3>Digital Wallet</h3>
+                                <p>Paytm, Mobikwik, Freecharge</p>
+                            </div>
+                            <div class="payment-radio">
+                                <input type="radio" name="payment-method" value="wallet">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Forms -->
+                    <div class="payment-forms">
+                        <!-- Card Payment Form -->
+                        <div class="payment-form active" id="card-form">
+                            <h3>Card Details</h3>
+                            <form id="card-payment-form">
+                                <div class="form-group">
+                                    <label for="card-number">Card Number</label>
+                                    <div class="card-input">
+                                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                                        <div class="card-icons">
+                                            <i class="fab fa-cc-visa"></i>
+                                            <i class="fab fa-cc-mastercard"></i>
+                                            <i class="fas fa-credit-card"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="expiry-date">Expiry Date</label>
+                                        <input type="text" id="expiry-date" placeholder="MM/YY" maxlength="5" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" id="cvv" placeholder="123" maxlength="4" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cardholder-name">Cardholder Name</label>
+                                    <input type="text" id="cardholder-name" placeholder="Enter cardholder name" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="card-email">Email Address</label>
+                                    <input type="email" id="card-email" placeholder="Enter email for receipt" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="card-mobile">Mobile Number</label>
+                                    <input type="tel" id="card-mobile" placeholder="Enter mobile number" pattern="[0-9]{10}" required>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- UPI Payment Form -->
+                        <div class="payment-form" id="upi-form">
+                            <h3>UPI Payment</h3>
+                            <form id="upi-payment-form">
+                                <div class="form-group">
+                                    <label for="upi-id">UPI ID</label>
+                                    <input type="text" id="upi-id" placeholder="yourname@paytm" required>
+                                </div>
+
+                                <div class="upi-apps">
+                                    <h4>Choose UPI App</h4>
+                                    <div class="upi-options">
+                                        <div class="upi-option">
+                                            <img src="https://via.placeholder.com/40x40/FF6B6B/FFFFFF?text=GP" alt="Google Pay">
+                                            <span>Google Pay</span>
+                                        </div>
+                                        <div class="upi-option">
+                                            <img src="https://via.placeholder.com/40x40/4CAF50/FFFFFF?text=PP" alt="PhonePe">
+                                            <span>PhonePe</span>
+                                        </div>
+                                        <div class="upi-option">
+                                            <img src="https://via.placeholder.com/40x40/2196F3/FFFFFF?text=PT" alt="Paytm">
+                                            <span>Paytm</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Net Banking Form -->
+                        <div class="payment-form" id="netbanking-form">
+                            <h3>Net Banking</h3>
+                            <form id="netbanking-payment-form">
+                                <div class="form-group">
+                                    <label for="bank-select">Select Bank</label>
+                                    <select id="bank-select" required>
+                                        <option value="">Choose your bank</option>
+                                        <option value="sbi">State Bank of India</option>
+                                        <option value="hdfc">HDFC Bank</option>
+                                        <option value="icici">ICICI Bank</option>
+                                        <option value="axis">Axis Bank</option>
+                                        <option value="pnb">Punjab National Bank</option>
+                                        <option value="bob">Bank of Baroda</option>
+                                        <option value="canara">Canara Bank</option>
+                                        <option value="union">Union Bank of India</option>
+                                    </select>
+                                </div>
+
+                                <div class="bank-logos">
+                                    <div class="bank-logo">
+                                        <img src="https://via.placeholder.com/60x40/FF6B6B/FFFFFF?text=SBI" alt="SBI">
+                                    </div>
+                                    <div class="bank-logo">
+                                        <img src="https://via.placeholder.com/60x40/4CAF50/FFFFFF?text=HDFC" alt="HDFC">
+                                    </div>
+                                    <div class="bank-logo">
+                                        <img src="https://via.placeholder.com/60x40/2196F3/FFFFFF?text=ICICI" alt="ICICI">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Wallet Payment Form -->
+                        <div class="payment-form" id="wallet-form">
+                            <h3>Digital Wallet</h3>
+                            <form id="wallet-payment-form">
+                                <div class="form-group">
+                                    <label for="wallet-select">Select Wallet</label>
+                                    <select id="wallet-select" required>
+                                        <option value="">Choose your wallet</option>
+                                        <option value="paytm">Paytm</option>
+                                        <option value="mobikwik">Mobikwik</option>
+                                        <option value="freecharge">Freecharge</option>
+                                        <option value="jio">JioMoney</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="wallet-mobile">Mobile Number</label>
+                                    <input type="tel" id="wallet-mobile" placeholder="Enter registered mobile number" pattern="[0-9]{10}" required>
+                                </div>
+
+                                <div class="wallet-balance">
+                                    <span>Available Balance: ₹<span id="wallet-balance">0</span></span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side - Order Summary -->
+                <div class="order-summary">
+                    <h2>Order Summary</h2>
+                    
+                    <div class="booking-details" id="booking-details">
+                        <!-- Booking details will be populated here -->
+                    </div>
+
+                    <div class="fare-breakdown">
+                        <div class="fare-item">
+                            <span>Base Fare</span>
+                            <span id="base-fare">₹0</span>
+                        </div>
+                        <div class="fare-item">
+                            <span>Service Tax (12%)</span>
+                            <span id="service-tax">₹0</span>
+                        </div>
+                        <div class="fare-item">
+                            <span>Convenience Fee</span>
+                            <span id="convenience-fee">₹0</span>
+                        </div>
+                        <div class="fare-item total">
+                            <span>Total Amount</span>
+                            <span id="total-amount">₹0</span>
+                        </div>
+                    </div>
+
+                    <div class="payment-security">
+                        <div class="security-features">
+                            <div class="security-item">
+                                <i class="fas fa-lock"></i>
+                                <span>256-bit SSL Encryption</span>
+                            </div>
+                            <div class="security-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>PCI DSS Compliant</span>
+                            </div>
+                            <div class="security-item">
+                                <i class="fas fa-user-shield"></i>
+                                <span>Fraud Protection</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-actions">
+                        <button class="btn btn-secondary" onclick="goBack()">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Booking
+                        </button>
+                        <button class="btn btn-primary" id="pay-now-btn" onclick="processPayment()">
+                            <i class="fas fa-lock"></i>
+                            Pay Now
+                        </button>
+                    </div>
+
+                    <div class="payment-terms">
+                        <p>By proceeding, you agree to our <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Payment Processing Modal -->
+    <div class="payment-modal" id="payment-modal">
+        <div class="modal-content">
+            <div class="processing-animation">
+                <div class="spinner"></div>
+                <h3>Processing Payment...</h3>
+                <p>Please do not close this window</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Payment Gateway JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            initializePaymentGateway();
+        });
+
+        function initializePaymentGateway() {
+            // Load booking data
+            loadBookingData();
+            
+            // Setup payment method selection
+            setupPaymentMethodSelection();
+            
+            // Setup form validation
+            setupFormValidation();
+        }
+
+        function loadBookingData() {
+            const bookingData = JSON.parse(sessionStorage.getItem('pendingBooking'));
+            if (!bookingData) {
+                showErrorMessage('No booking data found');
+                return;
+            }
+
+            // Populate booking details
+            const bookingDetails = document.getElementById('booking-details');
+            bookingDetails.innerHTML = `
+                <div class="booking-item">
+                    <div class="train-info">
+                        <h4>${bookingData.trainDetails.trainName}</h4>
+                        <span class="train-number">${bookingData.trainDetails.trainId}</span>
+                    </div>
+                    <div class="route-info">
+                        <span>${bookingData.trainDetails.from} → ${bookingData.trainDetails.to}</span>
+                        <span>${bookingData.trainDetails.date}</span>
+                    </div>
+                    <div class="timing-info">
+                        <span>${bookingData.trainDetails.departure} - ${bookingData.trainDetails.arrival}</span>
+                        <span>${bookingData.trainDetails.duration}</span>
+                    </div>
+                </div>
+            `;
+
+            // Calculate and display fare
+            calculateFare(bookingData);
+        }
+
+        function calculateFare(bookingData) {
+            const baseFare = bookingData.totalAmount || 1000;
+            const serviceTax = Math.round(baseFare * 0.12);
+            const convenienceFee = 30;
+            const totalAmount = baseFare + serviceTax + convenienceFee;
+
+            document.getElementById('base-fare').textContent = `₹${baseFare}`;
+            document.getElementById('service-tax').textContent = `₹${serviceTax}`;
+            document.getElementById('convenience-fee').textContent = `₹${convenienceFee}`;
+            document.getElementById('total-amount').textContent = `₹${totalAmount}`;
+        }
+
+        function setupPaymentMethodSelection() {
+            const paymentOptions = document.querySelectorAll('.payment-option');
+            const paymentForms = document.querySelectorAll('.payment-form');
+
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove active class from all options
+                    paymentOptions.forEach(opt => opt.classList.remove('active'));
+                    paymentForms.forEach(form => form.classList.remove('active'));
+
+                    // Add active class to selected option
+                    this.classList.add('active');
+                    
+                    // Show corresponding form
+                    const method = this.dataset.method;
+                    document.getElementById(`${method}-form`).classList.add('active');
+                });
+            });
+        }
+
+        function setupFormValidation() {
+            // Card number formatting
+            const cardNumberInput = document.getElementById('card-number');
+            if (cardNumberInput) {
+                cardNumberInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+                    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                    e.target.value = formattedValue;
+                });
+            }
+
+            // Expiry date formatting
+            const expiryInput = document.getElementById('expiry-date');
+            if (expiryInput) {
+                expiryInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length >= 2) {
+                        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                    }
+                    e.target.value = value;
+                });
+            }
+
+            // CVV formatting
+            const cvvInput = document.getElementById('cvv');
+            if (cvvInput) {
+                cvvInput.addEventListener('input', function(e) {
+                    e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                });
+            }
+        }
+
+        function processPayment() {
+            const selectedMethod = document.querySelector('input[name="payment-method"]:checked').value;
+            
+            // Validate form based on selected method
+            if (!validatePaymentForm(selectedMethod)) {
+                return;
+            }
+
+            // Show processing modal
+            showPaymentModal();
+
+            // Simulate payment processing
+            setTimeout(() => {
+                hidePaymentModal();
+                // Simulate successful payment
+                if (Math.random() > 0.1) { // 90% success rate
+                    showPaymentSuccess();
+                } else {
+                    showPaymentFailure();
+                }
+            }, 3000);
+        }
+
+        function validatePaymentForm(method) {
+            switch (method) {
+                case 'card':
+                    return validateCardForm();
+                case 'upi':
+                    return validateUPIForm();
+                case 'netbanking':
+                    return validateNetBankingForm();
+                case 'wallet':
+                    return validateWalletForm();
+                default:
+                    return false;
+            }
+        }
+
+        function validateCardForm() {
+            const cardNumber = document.getElementById('card-number').value;
+            const expiryDate = document.getElementById('expiry-date').value;
+            const cvv = document.getElementById('cvv').value;
+            const cardholderName = document.getElementById('cardholder-name').value;
+
+            if (!cardNumber || cardNumber.replace(/\s/g, '').length < 16) {
+                showErrorMessage('Please enter a valid card number');
+                return false;
+            }
+
+            if (!expiryDate || expiryDate.length < 5) {
+                showErrorMessage('Please enter a valid expiry date');
+                return false;
+            }
+
+            if (!cvv || cvv.length < 3) {
+                showErrorMessage('Please enter a valid CVV');
+                return false;
+            }
+
+            if (!cardholderName) {
+                showErrorMessage('Please enter cardholder name');
+                return false;
+            }
+
+            return true;
+        }
+
+        function validateUPIForm() {
+            const upiId = document.getElementById('upi-id').value;
+            
+            if (!upiId || !upiId.includes('@')) {
+                showErrorMessage('Please enter a valid UPI ID');
+                return false;
+            }
+
+            return true;
+        }
+
+        function validateNetBankingForm() {
+            const bankSelect = document.getElementById('bank-select').value;
+            
+            if (!bankSelect) {
+                showErrorMessage('Please select a bank');
+                return false;
+            }
+
+            return true;
+        }
+
+        function validateWalletForm() {
+            const walletSelect = document.getElementById('wallet-select').value;
+            const mobile = document.getElementById('wallet-mobile').value;
+            
+            if (!walletSelect) {
+                showErrorMessage('Please select a wallet');
+                return false;
+            }
+
+            if (!mobile || mobile.length !== 10) {
+                showErrorMessage('Please enter a valid mobile number');
+                return false;
+            }
+
+            return true;
+        }
+
+        function showPaymentModal() {
+            document.getElementById('payment-modal').style.display = 'flex';
+        }
+
+        function hidePaymentModal() {
+            document.getElementById('payment-modal').style.display = 'none';
+        }
+
+        function showPaymentSuccess() {
+            // Generate transaction ID
+            const transactionId = 'TXN' + Date.now();
+            
+            // Get pending booking data
+            const pendingBooking = JSON.parse(sessionStorage.getItem('pendingBooking'));
+            
+            // Store payment data
+            const paymentData = {
+                transactionId: transactionId,
+                amount: document.getElementById('total-amount').textContent,
+                method: document.querySelector('input[name="payment-method"]:checked').value,
+                timestamp: new Date().toISOString(),
+                status: 'success'
+            };
+            
+            // Complete the booking
+            if (pendingBooking) {
+                // Add payment info to booking
+                pendingBooking.payment = paymentData;
+                pendingBooking.status = 'Confirmed';
+                
+                // Store in user bookings
+                const existingBookings = JSON.parse(sessionStorage.getItem('userBookings') || '[]');
+                existingBookings.push(pendingBooking);
+                sessionStorage.setItem('userBookings', JSON.stringify(existingBookings));
+                
+                // Clear pending booking
+                sessionStorage.removeItem('pendingBooking');
+            }
+            
+            sessionStorage.setItem('paymentData', JSON.stringify(paymentData));
+            
+            // Redirect to success page
+            window.location.href = 'payment_success.html';
+        }
+
+        function showPaymentFailure() {
+            showErrorMessage('Payment failed. Please try again with a different payment method.');
+        }
+
+        function goBack() {
+            window.location.href = 'booking_page/index.html';
+        }
+    </script>
+</body>
+</html>

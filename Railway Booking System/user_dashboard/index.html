@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - IRCTC</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="user-header">
+        <div class="header-left">
+            <div class="logo">
+                <div class="logo-circle">
+                    <i class="fas fa-train"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="hindi">भारतीय रेल</span>
+                    <span class="english">INDIAN RAILWAYS</span>
+                </div>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>INDIAN RAILWAYS</h1>
+            <p>Safety | Security | Punctuality</p>
+        </div>
+        <div class="header-right">
+            <div class="user-profile" onclick="toggleUserMenu()">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="User Profile" class="profile-img">
+                <span>Welcome, John Doe</span>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="index.html" class="nav-link active">Dashboard</a>
+            <a href="../train_list/index.html" class="nav-link">Book Ticket</a>
+            <a href="#history" class="nav-link">History</a>
+            <a href="#profile" class="nav-link">Profile</a>
+            <a href="#logout" class="nav-link" onclick="logout()">Logout</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="user-dashboard">
+        <div class="dashboard-container">
+            <!-- Quick Stats -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Total Bookings</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Upcoming Journeys</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">₹8,450</div>
+                        <div class="stat-label">Total Spent</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">4.8</div>
+                        <div class="stat-label">Rating</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h3>Quick Actions</h3>
+                <div class="action-buttons">
+                    <button class="action-btn primary" onclick="goToBooking()">
+                        <i class="fas fa-plus"></i>
+                        Book New Ticket
+                    </button>
+                    <button class="action-btn secondary" onclick="showBookingHistory()">
+                        <i class="fas fa-history"></i>
+                        View History
+                    </button>
+                    <button class="action-btn secondary" onclick="showProfile()">
+                        <i class="fas fa-user-edit"></i>
+                        Edit Profile
+                    </button>
+                    <button class="action-btn secondary" onclick="showSupport()">
+                        <i class="fas fa-headset"></i>
+                        Support
+                    </button>
+                </div>
+            </div>
+
+            <!-- Upcoming Journeys -->
+            <div class="upcoming-journeys">
+                <h3>Upcoming Journeys</h3>
+                <div class="journey-cards">
+                    <div class="journey-card">
+                        <div class="journey-header">
+                            <div class="train-info">
+                                <h4>Rajdhani Express (12301)</h4>
+                                <p>Delhi → Mumbai</p>
+                            </div>
+                            <div class="journey-status confirmed">
+                                <i class="fas fa-check-circle"></i>
+                                Confirmed
+                            </div>
+                        </div>
+                        <div class="journey-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>25 Oct 2024</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>06:00 AM - 05:55 PM</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-chair"></i>
+                                <span>AC 2 Tier - B1/12</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹2,850</span>
+                            </div>
+                        </div>
+                        <div class="journey-actions">
+                            <button class="btn btn-primary" onclick="viewTicket('12301')">View Ticket</button>
+                            <button class="btn btn-secondary" onclick="cancelTicket('12301')">Cancel</button>
+                        </div>
+                    </div>
+
+                    <div class="journey-card">
+                        <div class="journey-header">
+                            <div class="train-info">
+                                <h4>Shatabdi Express (12045)</h4>
+                                <p>Chandigarh → Delhi</p>
+                            </div>
+                            <div class="journey-status waiting">
+                                <i class="fas fa-clock"></i>
+                                WL 15
+                            </div>
+                        </div>
+                        <div class="journey-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>28 Oct 2024</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>08:00 AM - 10:30 AM</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-chair"></i>
+                                <span>Chair Car - C1/25</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹850</span>
+                            </div>
+                        </div>
+                        <div class="journey-actions">
+                            <button class="btn btn-primary" onclick="viewTicket('12045')">View Ticket</button>
+                            <button class="btn btn-secondary" onclick="cancelTicket('12045')">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Bookings -->
+            <div class="recent-bookings">
+                <h3>Recent Bookings</h3>
+                <div class="bookings-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>PNR</th>
+                                <th>Train</th>
+                                <th>Route</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1234567890</td>
+                                <td>Rajdhani Express</td>
+                                <td>Delhi → Mumbai</td>
+                                <td>25 Oct 2024</td>
+                                <td><span class="status confirmed">Confirmed</span></td>
+                                <td>₹2,850</td>
+                                <td><button class="btn btn-small" onclick="viewTicket('1234567890')">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>1234567891</td>
+                                <td>Shatabdi Express</td>
+                                <td>Chandigarh → Delhi</td>
+                                <td>28 Oct 2024</td>
+                                <td><span class="status waiting">WL 15</span></td>
+                                <td>₹850</td>
+                                <td><button class="btn btn-small" onclick="viewTicket('1234567891')">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>1234567892</td>
+                                <td>Duronto Express</td>
+                                <td>Mumbai → Kolkata</td>
+                                <td>15 Oct 2024</td>
+                                <td><span class="status completed">Completed</span></td>
+                                <td>₹1,950</td>
+                                <td><button class="btn btn-small" onclick="viewTicket('1234567892')">View</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Profile Management -->
+            <div class="profile-section">
+                <h3>Profile Management</h3>
+                <div class="profile-cards">
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <i class="fas fa-user"></i>
+                            <h4>Personal Information</h4>
+                        </div>
+                        <div class="profile-content">
+                            <p><strong>Name:</strong> John Doe</p>
+                            <p><strong>Email:</strong> john.doe@email.com</p>
+                            <p><strong>Mobile:</strong> +91 9876543210</p>
+                            <p><strong>Date of Birth:</strong> 15 Jan 1990</p>
+                        </div>
+                        <button class="btn btn-primary" onclick="editProfile()">Edit Profile</button>
+                    </div>
+
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h4>Address Information</h4>
+                        </div>
+                        <div class="profile-content">
+                            <p><strong>Address:</strong> 123, Main Street</p>
+                            <p><strong>City:</strong> Mumbai</p>
+                            <p><strong>State:</strong> Maharashtra</p>
+                            <p><strong>Pin Code:</strong> 400001</p>
+                        </div>
+                        <button class="btn btn-primary" onclick="editAddress()">Edit Address</button>
+                    </div>
+
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Security Settings</h4>
+                        </div>
+                        <div class="profile-content">
+                            <p><strong>Password:</strong> Last changed 30 days ago</p>
+                            <p><strong>2FA:</strong> Enabled</p>
+                            <p><strong>Login History:</strong> Available</p>
+                        </div>
+                        <button class="btn btn-primary" onclick="changePassword()">Change Password</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- User Profile Popup -->
+    <div class="user-profile-popup" id="userProfilePopup">
+        <div class="popup-content">
+            <div class="popup-profile-img">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="User Profile">
+            </div>
+            <h3>John Doe</h3>
+            <p>john.doe@email.com</p>
+            <div class="popup-buttons">
+                <button class="btn btn-primary" onclick="showProfile()">View Profile</button>
+                <button class="btn btn-secondary" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Get Connected with us on social networks</p>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
+

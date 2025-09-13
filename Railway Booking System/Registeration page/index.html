@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRCTC Registration</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="registration-header">
+        <div class="header-icon">
+            <i class="fas fa-shield-alt"></i>
+            <span>Registration Basic Detail</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="registration-container">
+        <div class="registration-form">
+            <h2>Create Your account</h2>
+            
+            <!-- Registration Steps -->
+            <div class="registration-steps">
+                <div class="step active" data-step="1">
+                    <span>Basic Details</span>
+                </div>
+                <div class="step" data-step="2">
+                    <span>Personal Information</span>
+                </div>
+            </div>
+            
+            <!-- Step 1: Basic Details -->
+            <div class="step-content active" id="step-1">
+                <div class="warning-message">
+                    <strong>GARBAGE/JUNK VALUES IN PROFILE MAY LEAD TO DEACTIVATION</strong><br>
+                    Please use a valid E-Mail ID and mobile number in registration.
+                </div>
+                
+                <form class="registration-form-element" id="basic-details-form">
+                    <div class="form-group">
+                        <label for="username">User Name:</label>
+                        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password:</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="preferredLanguage">Preffred Language:</label>
+                        <select id="preferredLanguage" name="preferredLanguage" required>
+                            <option value="">Select Language</option>
+                            <option value="english">English</option>
+                            <option value="hindi">Hindi</option>
+                            <option value="bengali">Bengali</option>
+                            <option value="tamil">Tamil</option>
+                            <option value="telugu">Telugu</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="securityQuestion">What is your pet name?</label>
+                        <select id="securityQuestion" name="securityQuestion" required>
+                            <option value="">Select Security Question</option>
+                            <option value="pet">What is your pet name?</option>
+                            <option value="mother">What is your mother's maiden name?</option>
+                            <option value="school">What was the name of your first school?</option>
+                            <option value="city">What city were you born in?</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="securityAnswer">Security Answer:</label>
+                        <input type="text" id="securityAnswer" name="securityAnswer" placeholder="Enter your security answer" required>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-cancel" onclick="cancelRegistration()">Cancel</button>
+                        <button type="button" class="btn btn-continue" onclick="nextStep(2)">Continue→</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Step 2: Personal Information -->
+            <div class="step-content" id="step-2">
+                <form class="registration-form-element" id="personal-details-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name:</label>
+                            <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name:</label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">Mobile:</label>
+                            <div class="mobile-input">
+                                <span class="country-code">+91</span>
+                                <input type="tel" id="mobile" name="mobile" placeholder="Enter mobile number" pattern="[0-9]{10}" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of Birth:</label>
+                            <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Gender:</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="gender" value="male" required>
+                                    <span class="radio-custom"></span>
+                                    Male
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="gender" value="female" required>
+                                    <span class="radio-custom"></span>
+                                    Female
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City:</label>
+                            <select id="city" name="city" required>
+                                <option value="">Select City</option>
+                                <option value="mumbai">Mumbai</option>
+                                <option value="delhi">Delhi</option>
+                                <option value="bangalore">Bangalore</option>
+                                <option value="chennai">Chennai</option>
+                                <option value="kolkata">Kolkata</option>
+                                <option value="hyderabad">Hyderabad</option>
+                                <option value="pune">Pune</option>
+                                <option value="ahmedabad">Ahmedabad</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State:</label>
+                            <input type="text" id="state" name="state" placeholder="Enter state" required>
+                        </div>
+                    </div>
+                    
+                    <div class="captcha-section">
+                        <div class="captcha-image">
+                            <span id="captcha-text">@w@ra</span>
+                            <button type="button" class="refresh-captcha" onclick="refreshCaptcha()">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                        <div class="captcha-input">
+                            <input type="text" id="captcha" name="captcha" placeholder="Enter Captcha" required>
+                        </div>
+                    </div>
+                    
+                    <div class="terms-checkbox">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <span class="checkmark"></span>
+                            I have read and agree with the <a href="#" class="terms-link">Terms and Conditions</a>
+                        </label>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-back" onclick="prevStep(1)">Back</button>
+                        <button type="submit" class="btn btn-register" onclick="handleRegistration(event)">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="../script.js"></script>
+</body>
+</html>
+

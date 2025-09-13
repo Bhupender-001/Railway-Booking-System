@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - IRCTC</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <div class="logo-circle">
+                    <i class="fas fa-train"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="hindi">भारतीय रेल</span>
+                    <span class="english">INDIAN RAILWAYS</span>
+                </div>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>INDIAN RAILWAYS</h1>
+            <p>Safety | Security | Punctuality</p>
+        </div>
+        <div class="header-right">
+            <div class="irctc-logo">
+                <div class="irctc-icon">R</div>
+                <span>IRCTC</span>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="Login_Page/index.html" class="nav-link">Login</a>
+            <a href="Registeration page/index.html" class="nav-link">Register</a>
+            <a href="train_list/index.html" class="nav-link">Train List</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="payment-success-container">
+        <div class="success-content">
+            <div class="success-header">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h1>Payment Successful!</h1>
+                <p>Your ticket has been booked successfully</p>
+            </div>
+
+            <div class="payment-details">
+                <div class="payment-info">
+                    <h2>Payment Details</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="label">Transaction ID:</span>
+                            <span class="value" id="transaction-id">Loading...</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Payment Method:</span>
+                            <span class="value" id="payment-method">Loading...</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Amount Paid:</span>
+                            <span class="value" id="amount-paid">Loading...</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Payment Time:</span>
+                            <span class="value" id="payment-time">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="booking-summary">
+                    <h2>Booking Summary</h2>
+                    <div class="booking-details" id="booking-summary">
+                        <!-- Booking details will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="next-steps">
+                <h2>What's Next?</h2>
+                <div class="steps-grid">
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Email Confirmation</h3>
+                            <p>You will receive a confirmation email with your ticket details</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>SMS Notification</h3>
+                            <p>An SMS with booking details will be sent to your mobile</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-icon">
+                            <i class="fas fa-print"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Print Ticket</h3>
+                            <p>You can print your ticket from the booking confirmation page</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="viewTicket()">
+                    <i class="fas fa-ticket-alt"></i>
+                    View Ticket
+                </button>
+                <button class="btn btn-primary" onclick="downloadReceipt()">
+                    <i class="fas fa-download"></i>
+                    Download Receipt
+                </button>
+                <button class="btn btn-success" onclick="goToHome()">
+                    <i class="fas fa-home"></i>
+                    Back to Home
+                </button>
+            </div>
+
+            <div class="important-notes">
+                <h3>Important Notes:</h3>
+                <ul>
+                    <li>Please carry a valid ID proof while traveling</li>
+                    <li>Arrive at the station at least 30 minutes before departure</li>
+                    <li>Keep this payment receipt safe for your records</li>
+                    <li>For any queries, contact IRCTC customer care</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPaymentDetails();
+        });
+
+        function loadPaymentDetails() {
+            const paymentData = JSON.parse(sessionStorage.getItem('paymentData'));
+            const userBookings = JSON.parse(sessionStorage.getItem('userBookings') || '[]');
+            const bookingData = userBookings[userBookings.length - 1]; // Get latest booking
+
+            if (paymentData) {
+                document.getElementById('transaction-id').textContent = paymentData.transactionId;
+                document.getElementById('payment-method').textContent = formatPaymentMethod(paymentData.method);
+                document.getElementById('amount-paid').textContent = paymentData.amount;
+                document.getElementById('payment-time').textContent = new Date(paymentData.timestamp).toLocaleString();
+            }
+
+            if (bookingData) {
+                const bookingSummary = document.getElementById('booking-summary');
+                bookingSummary.innerHTML = `
+                    <div class="booking-item">
+                        <div class="train-info">
+                            <h4>${bookingData.trainDetails.trainName}</h4>
+                            <span class="train-number">${bookingData.trainDetails.trainId}</span>
+                        </div>
+                        <div class="route-info">
+                            <span>${bookingData.trainDetails.from} → ${bookingData.trainDetails.to}</span>
+                            <span>${bookingData.trainDetails.date}</span>
+                        </div>
+                        <div class="timing-info">
+                            <span>${bookingData.trainDetails.departure} - ${bookingData.trainDetails.arrival}</span>
+                            <span>${bookingData.trainDetails.duration}</span>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function formatPaymentMethod(method) {
+            const methods = {
+                'card': 'Credit/Debit Card',
+                'upi': 'UPI Payment',
+                'netbanking': 'Net Banking',
+                'wallet': 'Digital Wallet'
+            };
+            return methods[method] || method;
+        }
+
+        function viewTicket() {
+            window.location.href = 'booking_confirmation.html';
+        }
+
+        function downloadReceipt() {
+            alert('Receipt download feature will be implemented soon!');
+        }
+
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

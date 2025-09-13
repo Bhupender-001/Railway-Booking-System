@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation - IRCTC</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <div class="logo-circle">
+                    <i class="fas fa-train"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="hindi">भारतीय रेल</span>
+                    <span class="english">INDIAN RAILWAYS</span>
+                </div>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>INDIAN RAILWAYS</h1>
+            <p>Safety | Security | Punctuality</p>
+        </div>
+        <div class="header-right">
+            <div class="irctc-logo">
+                <div class="irctc-icon">R</div>
+                <span>IRCTC</span>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="Login_Page/index.html" class="nav-link">Login</a>
+            <a href="Registeration page/index.html" class="nav-link">Register</a>
+            <a href="train_list/index.html" class="nav-link">Train List</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="confirmation-container">
+        <div class="confirmation-content">
+            <div class="success-header">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h1>Booking Confirmed!</h1>
+                <p>Your ticket has been successfully booked</p>
+            </div>
+            
+            <div class="ticket-details">
+                <div class="ticket-header">
+                    <h2>E-Ticket</h2>
+                    <div class="pnr-section">
+                        <span class="pnr-label">PNR Number:</span>
+                        <span class="pnr-number" id="pnr-number">Loading...</span>
+                    </div>
+                </div>
+                
+                <div class="ticket-body">
+                    <div class="train-info">
+                        <h3 id="train-name">Loading...</h3>
+                        <div class="train-details">
+                            <div class="detail-row">
+                                <span class="label">Train Number:</span>
+                                <span class="value" id="train-number">Loading...</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">Date of Journey:</span>
+                                <span class="value" id="journey-date">Loading...</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">From:</span>
+                                <span class="value" id="from-station">Loading...</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">To:</span>
+                                <span class="value" id="to-station">Loading...</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">Departure:</span>
+                                <span class="value" id="departure-time">Loading...</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">Arrival:</span>
+                                <span class="value" id="arrival-time">Loading...</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">Duration:</span>
+                                <span class="value" id="duration">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="passengers-info">
+                        <h3>Passenger Details</h3>
+                        <div class="passengers-list" id="passengers-list">
+                            <!-- Passengers will be populated here -->
+                        </div>
+                    </div>
+                    
+                    <div class="fare-details">
+                        <h3>Fare Details</h3>
+                        <div class="fare-breakdown">
+                            <div class="fare-row">
+                                <span class="label">Base Fare:</span>
+                                <span class="value" id="base-fare">Loading...</span>
+                            </div>
+                            <div class="fare-row">
+                                <span class="label">Service Tax:</span>
+                                <span class="value" id="service-tax">Loading...</span>
+                            </div>
+                            <div class="fare-row total">
+                                <span class="label">Total Amount:</span>
+                                <span class="value" id="total-amount">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ticket-footer">
+                    <div class="booking-info">
+                        <p><strong>Booking Date:</strong> <span id="booking-date">Loading...</span></p>
+                        <p><strong>Status:</strong> <span class="status confirmed" id="booking-status">Confirmed</span></p>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="printTicket()">
+                            <i class="fas fa-print"></i> Print Ticket
+                        </button>
+                        <button class="btn btn-secondary" onclick="downloadTicket()">
+                            <i class="fas fa-download"></i> Download PDF
+                        </button>
+                        <button class="btn btn-success" onclick="goToHome()">
+                            <i class="fas fa-home"></i> Back to Home
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="important-notes">
+                <h3>Important Notes:</h3>
+                <ul>
+                    <li>Please carry a valid ID proof while traveling</li>
+                    <li>Arrive at the station at least 30 minutes before departure</li>
+                    <li>Keep this e-ticket safe for your journey</li>
+                    <li>For any queries, contact IRCTC customer care</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Get Connected with us on social networks</p>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Load booking confirmation data
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const pnr = urlParams.get('pnr');
+            
+            if (!pnr) {
+                showErrorMessage('Invalid booking reference');
+                return;
+            }
+            
+            // Get booking data from sessionStorage
+            const bookings = JSON.parse(sessionStorage.getItem('userBookings') || '[]');
+            const booking = bookings.find(b => b.pnr === pnr);
+            
+            if (!booking) {
+                showErrorMessage('Booking not found');
+                return;
+            }
+            
+            // Populate ticket details
+            populateTicketDetails(booking);
+        });
+        
+        function populateTicketDetails(booking) {
+            // PNR
+            document.getElementById('pnr-number').textContent = booking.pnr;
+            
+            // Train details
+            document.getElementById('train-name').textContent = booking.trainDetails.trainName;
+            document.getElementById('train-number').textContent = booking.trainDetails.trainId;
+            document.getElementById('journey-date').textContent = booking.trainDetails.date;
+            document.getElementById('from-station').textContent = booking.trainDetails.from;
+            document.getElementById('to-station').textContent = booking.trainDetails.to;
+            document.getElementById('departure-time').textContent = booking.trainDetails.departure;
+            document.getElementById('arrival-time').textContent = booking.trainDetails.arrival;
+            document.getElementById('duration').textContent = booking.trainDetails.duration;
+            
+            // Passengers
+            const passengersList = document.getElementById('passengers-list');
+            passengersList.innerHTML = '';
+            
+            booking.passengers.forEach((passenger, index) => {
+                const passengerDiv = document.createElement('div');
+                passengerDiv.className = 'passenger-item';
+                passengerDiv.innerHTML = `
+                    <div class="passenger-number">Passenger ${index + 1}</div>
+                    <div class="passenger-details">
+                        <div class="passenger-name">${passenger.firstName} ${passenger.lastName}</div>
+                        <div class="passenger-info">
+                            <span>Age: ${passenger.age}</span>
+                            <span>Mobile: ${passenger.mobile}</span>
+                            <span>Berth: ${passenger.berth}</span>
+                        </div>
+                    </div>
+                `;
+                passengersList.appendChild(passengerDiv);
+            });
+            
+            // Fare details
+            const baseFare = booking.totalAmount;
+            const serviceTax = Math.round(baseFare * 0.12); // 12% service tax
+            const totalAmount = baseFare + serviceTax;
+            
+            document.getElementById('base-fare').textContent = `₹${baseFare}`;
+            document.getElementById('service-tax').textContent = `₹${serviceTax}`;
+            document.getElementById('total-amount').textContent = `₹${totalAmount}`;
+            
+            // Booking info
+            const bookingDate = new Date(booking.bookingDate).toLocaleDateString('en-GB');
+            document.getElementById('booking-date').textContent = bookingDate;
+        }
+        
+        function printTicket() {
+            window.print();
+        }
+        
+        function downloadTicket() {
+            alert('PDF download feature will be implemented soon!');
+        }
+        
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

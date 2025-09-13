@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRCTC: Booking Page</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <div class="logo-circle">
+                    <i class="fas fa-train"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="hindi">भारतीय रेल</span>
+                    <span class="english">INDIAN RAILWAYS</span>
+                </div>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>INDIAN RAILWAYS</h1>
+            <p>Safety | Security | Punctuality</p>
+        </div>
+        <div class="header-right">
+            <div class="irctc-logo">
+                <div class="irctc-icon">R</div>
+                <span>IRCTC</span>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../Login_Page/index.html" class="nav-link">Login</a>
+            <a href="../Registeration page/index.html" class="nav-link">Register</a>
+            <a href="../train_list/index.html" class="nav-link">Train List</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="booking-container">
+        <div class="booking-content">
+            <h1>Booking Page</h1>
+            
+            <!-- Your Selections -->
+            <div class="selection-card">
+                <h3>Your Selections:</h3>
+                <div class="selection-info">
+                    <div>
+                        <strong>From:</strong> <span id="from-selection">Mumbai</span>
+                    </div>
+                    <div>
+                        <strong>To:</strong> <span id="to-selection">Delhi</span>
+                    </div>
+                    <div>
+                        <strong>Date:</strong> <span id="date-selection">2024-10-25</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Selected Train Details -->
+            <div class="train-details-card">
+                <h3>Selected Train Details:</h3>
+                <div class="train-details">
+                    <div>
+                        <strong>Train Name:</strong> <span id="train-name">Loading...</span>
+                    </div>
+                    <div>
+                        <strong>Train ID:</strong> <span id="train-id">Loading...</span>
+                    </div>
+                    <div>
+                        <strong>From:</strong> <span id="train-from">Loading...</span>
+                    </div>
+                    <div>
+                        <strong>To:</strong> <span id="train-to">Loading...</span>
+                    </div>
+                    <div>
+                        <strong>Departure Time:</strong> <span id="departure-time">Loading...</span>
+                    </div>
+                    <div>
+                        <strong>Arrival Time:</strong> <span id="arrival-time">Loading...</span>
+                    </div>
+                    <div>
+                        <strong>Duration:</strong> <span id="duration">Loading...</span>
+                    </div>
+                    <div>
+                        <strong>Seats Available:</strong> <span id="seats-available">Loading...</span>
+                    </div>
+                </div>
+                <button class="proceed-btn" onclick="proceedToBooking()">Proceed to Booking</button>
+            </div>
+            
+            <!-- Book Your Ticket -->
+            <div class="booking-card">
+                <h3>Book Your Ticket</h3>
+                <form id="booking-form" onsubmit="handleBookingSubmission(event)">
+                    <div id="passengers-container">
+                        <!-- Passenger 1 -->
+                        <div class="passenger-form">
+                            <h4>Passenger 1</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>First Name:</label>
+                                    <input type="text" name="firstName1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name:</label>
+                                    <input type="text" name="lastName1" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Age:</label>
+                                    <input type="number" name="age1" min="1" max="120" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mobile Number:</label>
+                                    <input type="tel" name="mobile1" pattern="[0-9]{10}" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Type of Berth:</label>
+                                <select name="berth1" class="berth-select">
+                                    <option value="side-lower">Side Lower</option>
+                                    <option value="side-upper">Side Upper</option>
+                                    <option value="lower">Lower</option>
+                                    <option value="middle">Middle</option>
+                                    <option value="upper">Upper</option>
+                                    <option value="side-middle">Side Middle</option>
+                                </select>
+                            </div>
+                            <button type="button" class="remove-btn" onclick="removePassenger(this)">Remove Passenger</button>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button type="button" class="add-btn" onclick="addPassenger()">Add Passenger</button>
+                        <button type="submit" class="book-btn">Proceed to Payment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Get Connected with us on social networks</p>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
+

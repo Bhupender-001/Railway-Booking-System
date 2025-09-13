@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRCTC: Next Generation eTicketing</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <div class="logo-circle">
+                    <i class="fas fa-train"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="hindi">भारतीय रेल</span>
+                    <span class="english">INDIAN RAILWAYS</span>
+                </div>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>INDIAN RAILWAYS</h1>
+            <p>Safety | Security | Punctuality</p>
+        </div>
+        <div class="header-right">
+            <div class="irctc-logo">
+                <div class="irctc-icon">R</div>
+                <span>IRCTC</span>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="Login_Page/index.html" class="nav-link">Login</a>
+            <a href="Registeration page/index.html" class="nav-link">Register</a>
+            <a href="train_list/index.html" class="nav-link">Train List</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="background-image">
+            <div class="booking-form-container">
+                <div class="booking-form">
+                    <h2>BOOK TICKET</h2>
+                    <form class="ticket-form" action="train_list/index.html" method="GET">
+                        <div class="form-group">
+                            <label for="from">From</label>
+                            <div class="input-group">
+                                <input type="text" id="from" name="from" placeholder="Enter source station" required>
+                                <i class="fas fa-chevron-down"></i>
+                                <button type="button" class="swap-btn" onclick="swapStations()">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="to">To</label>
+                            <div class="input-group">
+                                <input type="text" id="to" name="to" placeholder="Enter destination station" required>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <div class="input-group">
+                                <input type="date" id="date" name="date" required>
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="class">Class</label>
+                            <div class="input-group">
+                                <select id="class" name="class">
+                                    <option value="all">All Classes</option>
+                                    <option value="1A">1A - First AC</option>
+                                    <option value="2A">2A - Second AC</option>
+                                    <option value="3A">3A - Third AC</option>
+                                    <option value="SL">SL - Sleeper</option>
+                                    <option value="CC">CC - Chair Car</option>
+                                </select>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="quota">Quota</label>
+                            <div class="input-group">
+                                <select id="quota" name="quota">
+                                    <option value="general">General</option>
+                                    <option value="tatkal">Tatkal</option>
+                                    <option value="premium">Premium Tatkal</option>
+                                </select>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="disability">
+                                <span class="checkmark"></span>
+                                People With Disability Concession
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="flexible">
+                                <span class="checkmark"></span>
+                                Flexible with date
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="available">
+                                <span class="checkmark"></span>
+                                Train with available berth
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="pass">
+                                <span class="checkmark"></span>
+                                Railway pass concession
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="search-btn">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Get Connected with us on social networks</p>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - IRCTC</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="admin-header">
+        <div class="header-left">
+            <div class="admin-logo">
+                <i class="fas fa-user-circle"></i>
+                <span>Admin Dashboard</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="user-profile" onclick="toggleUserMenu()">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Admin User" class="profile-img">
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+        <div class="sidebar-profile">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Admin Profile" class="sidebar-profile-img">
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="#dashboard" class="nav-item active" onclick="showSection('dashboard')">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#train-profile" class="nav-item" onclick="showSection('train-profile')">
+                <i class="fas fa-user"></i>
+                <span>Train Profile</span>
+            </a>
+            <a href="#view-schedule" class="nav-item" onclick="showSection('view-schedule')">
+                <i class="fas fa-eye"></i>
+                <span>View Schedule</span>
+            </a>
+            <a href="#train-schedule" class="nav-item" onclick="showSection('train-schedule')">
+                <i class="fas fa-train"></i>
+                <span>Train Schedule</span>
+            </a>
+            <a href="#settings" class="nav-item" onclick="showSection('settings')">
+                <i class="fas fa-cog"></i>
+                <span>Setting</span>
+            </a>
+            <a href="#signout" class="nav-item" onclick="signOut()">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Sign Out</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="#change-password" class="footer-link" onclick="showChangePassword()">
+                <i class="fas fa-lock"></i>
+                <span>Change Password</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Dashboard Section -->
+        <section id="dashboard-section" class="content-section active">
+            <div class="content-header">
+                <div class="hamburger-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Q Search Here">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="header-profile">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Admin" class="header-profile-img">
+                </div>
+            </div>
+            
+            <div class="stats-cards">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">50</div>
+                        <div class="stat-label">Register</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">25</div>
+                        <div class="stat-label">Ticket</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-blocks">
+                <div class="content-block large">
+                    <h3>User Management</h3>
+                    <div class="block-content">
+                        <p>Manage user accounts, view registrations, and handle user-related operations.</p>
+                    </div>
+                </div>
+                
+                <div class="content-block small">
+                    <h3>Quick Actions</h3>
+                    <div class="block-content">
+                        <button class="action-btn" onclick="showSection('train-schedule')">Add Train</button>
+                        <button class="action-btn" onclick="showSection('view-schedule')">View Schedules</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Train Schedule Section -->
+        <section id="train-schedule-section" class="content-section">
+            <div class="content-header">
+                <div class="hamburger-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Q Search Here">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="header-profile">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Admin" class="header-profile-img">
+                </div>
+            </div>
+            
+            <div class="schedule-form-container">
+                <h2>Set Train Schedule</h2>
+                <form class="schedule-form" onsubmit="handleScheduleSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" placeholder="Train NO" name="trainNo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Train Name" name="trainName" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="From" name="from" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" placeholder="To" name="to" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="time" placeholder="Arrival" name="arrival" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="time" placeholder="Depature" name="departure" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" placeholder="Timming" name="timing" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" placeholder="Second Setting" name="secondSetting" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" placeholder="Second Setting Fare" name="secondSettingFare" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="number" placeholder="Slepper" name="sleeper" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" placeholder="Slepper Fare" name="sleeperFare" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" placeholder="Third AC" name="thirdAC" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="number" placeholder="Third AC Fare" name="thirdACFare" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" placeholder="Second AC" name="secondAC" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" placeholder="Second AC Fare" name="secondACFare" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="number" placeholder="First AC" name="firstAC" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" placeholder="First AC Fare" name="firstACFare" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">SUBMIT</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- View Schedule Section -->
+        <section id="view-schedule-section" class="content-section">
+            <div class="content-header">
+                <div class="hamburger-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search Here">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="header-profile">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Admin" class="header-profile-img">
+                </div>
+            </div>
+            
+            <div class="schedule-table-container">
+                <h2>View Train Schedule</h2>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Train No</th>
+                            <th>Train Name</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Arrival</th>
+                            <th>Departure</th>
+                            <th>Timming</th>
+                            <th>Second Setting</th>
+                            <th>Fare</th>
+                            <th>Slepper</th>
+                            <th>Fare</th>
+                            <th>AC III</th>
+                            <th>Fare</th>
+                            <th>AC II</th>
+                            <th>Fare</th>
+                            <th>AC I</th>
+                            <th>Fare</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>12183</td>
+                            <td>PBH SF EXP</td>
+                            <td>cnb</td>
+                            <td>lko</td>
+                            <td>04:00</td>
+                            <td>05:25</td>
+                            <td>01:25</td>
+                            <td>Nan</td>
+                            <td>Nan</td>
+                            <td>22</td>
+                            <td>175</td>
+                            <td>11</td>
+                            <td>555</td>
+                            <td>15</td>
+                            <td>760</td>
+                            <td>Nan</td>
+                            <td>Nan</td>
+                            <td><button class="delete-btn" onclick="deleteTrain('12183')">DELETE</button></td>
+                        </tr>
+                        <tr class="highlighted">
+                            <td>82502</td>
+                            <td>TEJAS EXP</td>
+                            <td>cnb</td>
+                            <td>lko</td>
+                            <td>20:40</td>
+                            <td>22:05</td>
+                            <td>01:25</td>
+                            <td>nan</td>
+                            <td>nan</td>
+                            <td>nan</td>
+                            <td>nan</td>
+                            <td>nan</td>
+                            <td>nan</td>
+                            <td>nan</td>
+                            <td>nan</td>
+                            <td>50</td>
+                            <td>326</td>
+                            <td><button class="delete-btn highlighted" onclick="deleteTrain('82502')">DELETE</button></td>
+                        </tr>
+                        <tr>
+                            <td>12004</td>
+                            <td>SWRAN SHTBD</td>
+                            <td>cnb</td>
+                            <td>lko</td>
+                            <td>11:28</td>
+                            <td>12:55</td>
+                            <td>01:27</td>
+                            <td>Nan</td>
+                            <td>Nan</td>
+                            <td>Nan</td>
+                            <td>250</td>
+                            <td>335</td>
+                            <td>25</td>
+                            <td>645</td>
+                            <td>11</td>
+                            <td>745</td>
+                            <td><button class="delete-btn" onclick="deleteTrain('12004')">DELETE</button></td>
+                        </tr>
+                        <tr>
+                            <td>19165</td>
+                            <td>SABARMATI EXP</td>
+                            <td>cnb</td>
+                            <td>lko</td>
+                            <td>23:30</td>
+                            <td>01:00</td>
+                            <td>01:30</td>
+                            <td>Nan</td>
+                            <td>Nan</td>
+                            <td>75</td>
+                            <td>145</td>
+                            <td>35</td>
+                            <td>505</td>
+                            <td>25</td>
+                            <td>710</td>
+                            <td>Nan</td>
+                            <td>Nan</td>
+                            <td><button class="delete-btn" onclick="deleteTrain('19165')">DELETE</button></td>
+                        </tr>
+                        <tr>
+                            <td>11109</td>
+                            <td>LJN INTERCITY</td>
+                            <td>cnb</td>
+                            <td>lko</td>
+                            <td>10:30</td>
+                            <td>12:00</td>
+                            <td>01:30</td>
+                            <td>53</td>
+                            <td>60</td>
+                            <td>54</td>
+                            <td>265</td>
+                            <td>25</td>
+                            <td>505</td>
+                            <td>25</td>
+                            <td>710</td>
+                            <td>Nan</td>
+                            <td>Nan</td>
+                            <td><button class="delete-btn" onclick="deleteTrain('11109')">DELETE</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings-section" class="content-section">
+            <div class="content-header">
+                <div class="hamburger-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Q Search Here">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="header-profile">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&q=80" alt="Admin" class="header-profile-img">
+                </div>
+            </div>
+            
+            <div class="settings-container">
+                <h2>Settings</h2>
+                <div class="settings-content">
+                    <p>Admin settings and configuration options will be displayed here.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- User Profile Popup -->
+    <div class="user-profile-popup" id="userProfilePopup">
+        <div class="popup-header">
+            <button class="close-popup" onclick="toggleUserMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="popup-content">
+            <div class="popup-profile-img">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Admin Profile">
+            </div>
+            <h3>Hi, Samsa</h3>
+            <p>samsa.programmer@gmail.com</p>
+            <div class="popup-buttons">
+                <button class="btn btn-change-password" onclick="showChangePassword()">Change Password</button>
+                <button class="btn btn-add-account" onclick="addAccount()">Add Account</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div class="change-password-modal" id="changePasswordModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Change Password</h3>
+                <button class="close-modal" onclick="closeChangePassword()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="change-password-form" onsubmit="handleChangePassword(event)">
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Old Password" name="oldPassword" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="New Password" name="newPassword" required>
+                </div>
+                <button type="submit" class="btn btn-change-password">Change Password</button>
+                <a href="#" class="forgot-password-link">Forgot your password?</a>
+            </form>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>
+
